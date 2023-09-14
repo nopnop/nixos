@@ -130,8 +130,8 @@
   # ----------------------------------------------------------------------
 
 
-  # Network name (how change it per host?)
-  networking.hostName = "n01234";
+  # Network name
+  networking.hostName = "n00085";
 
   # Boot loader configuration
   boot.loader.systemd-boot.enable = true;
