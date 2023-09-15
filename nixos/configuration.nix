@@ -155,10 +155,10 @@
 
       # TODO: Remove me then?
       packages = with pkgs; [
-        firefox
-        google-chrome
-        atuin
-        git
+        # firefox
+        # google-chrome
+        # atuin
+        # git
       ];
     };
   };

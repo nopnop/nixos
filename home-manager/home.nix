@@ -47,13 +47,22 @@
     homeDirectory = "/home/jponchon";
   };
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
 
-  # Enable home-manager and git
+
+  # Add stuff for your user as you see fit:
+  home.packages = with pkgs; [ rnix-lsp nixpkgs-fmt  ];
+
+  # programs.neovim.enable = true;
+  programs.firefox.enable = true;
+  programs.google-chrome.enable = true;
+  programs.vscode.enable = true;
+  programs.atuin.enable = true;
   programs.home-manager.enable = true;
-  programs.git.enable = true;
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
+
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
