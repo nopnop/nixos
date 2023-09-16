@@ -64,6 +64,13 @@
   };
 
 
+  # Programs for Hyprland
+  programs.kitty.enable = true;
+  programs.dunst.enable = true;
+  programs.pipewire.enable = true;
+  programs.wireplumber.enable = true;
+
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
