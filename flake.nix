@@ -13,6 +13,9 @@
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+
+    hyprland.url = "github:hyprwm/Hyprland";
+
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
 
@@ -21,7 +24,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -70,6 +73,8 @@
 
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
+      ## Comment & follow link to make it 
+      ## a nixos module: https://github.com/Misterio77/nix-starter-configs#use-home-manager-as-a-nixos-module
       homeConfigurations = {
         # Replaced with your username@hostname
         "jponchon@n00085" = home-manager.lib.homeManagerConfiguration {
@@ -78,6 +83,9 @@
           modules = [
             # > Our main home-manager configuration file <
             ./home-manager/home.nix
+
+            hyprland.homeManagerModules.default
+            {wayland.windowManager.hyprland.enable = true;}
           ];
         };
       };

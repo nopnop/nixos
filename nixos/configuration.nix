@@ -14,6 +14,9 @@
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
 
+    # Import home-manager's NixOS module https://github.com/Misterio77/nix-starter-configs#use-home-manager-as-a-nixos-module
+    # inputs.home-manager.nixosModules.home-manager
+
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
@@ -57,6 +60,10 @@
       experimental-features = "nix-command flakes";
       # Deduplicate and optimize nix store
       auto-optimise-store = true;
+
+      # For hyprland https://wiki.hyprland.org/Nix/Cachix/
+      substituters = ["https://hyprland.cachix.org"];
+      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     };
   };
 
@@ -158,9 +165,24 @@
         # firefox
         # google-chrome
         # atuin
-        # git
+        git
+        home-manager
       ];
     };
+  };
+
+  # home-manager = {
+  #   extraSpecialArgs = { inherit inputs outputs; };
+  #   users = {
+  #     # Import your home-manager configuration
+  #     jponchon = import ../home-manager/home.nix;
+  #   };
+    
+  # };
+
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
   # This setups a SSH server. Very important if you're setting up a headless system.
