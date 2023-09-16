@@ -63,12 +63,18 @@
     defaultEditor = true;
   };
 
+  programs.yazi.enable = true;
+
+
+
 
   # Programs for Hyprland
   programs.kitty.enable = true;
-  programs.dunst.enable = true;
-  programs.pipewire.enable = true;
-  programs.wireplumber.enable = true;
+  services.dunst.enable = true;
+  programs.waybar.enable = true;
+  # services.pipewire.enable = true;
+  # services.wireplumber.enable = true;
+
 
 
   # Nicely reload system units when changing configs
