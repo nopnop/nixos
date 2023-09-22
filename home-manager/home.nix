@@ -11,7 +11,7 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    # ./bash.nix
+    ./bash.nix
   ];
 
   nixpkgs = {
@@ -66,10 +66,10 @@
     userEmail = "jean.ponchon@novadiscovery.com";
   };
 
-  programs.bash = {
-    enable = true;
-    initExtra = builtins.readFile ./bash-extra.sh;
-  };
+  # programs.bash = {
+  #   enable = true;
+  #   initExtra = builtins.readFile ./bash-extra.sh;
+  # };
 
 
   # Blazing fast terminal file manager written in Rust, based on async I/O.
