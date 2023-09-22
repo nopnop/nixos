@@ -11,7 +11,7 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
+    ./bash.nix
   ];
 
   nixpkgs = {
@@ -50,32 +50,40 @@
 
 
   # Add stuff for your user as you see fit:
-  home.packages = with pkgs; [ rnix-lsp nixpkgs-fmt  ];
+  home.packages = with pkgs; [ rnix-lsp nixpkgs-fmt ];
 
-  # programs.neovim.enable = true;
   programs.firefox.enable = true;
   programs.google-chrome.enable = true;
   programs.vscode.enable = true;
-  programs.atuin.enable = true;
+  programs.fzf.enable = true;
+  programs.bat.enable = true;
   programs.home-manager.enable = true;
   programs.neovim = {
     enable = true;
     defaultEditor = true;
   };
 
+  programs.git = {
+    enable = true;
+    userName = "Jean Ponchon";
+    userEmail = "jean.ponchon@novadiscovery.com";
+    # core = {
+    #   editor = "nvim";
+    # };
+    # pull = {
+    #   ff = "only";
+    # };
+  };
+
+
+  # Blazing fast terminal file manager written in Rust, based on async I/O.
   programs.yazi.enable = true;
 
-
-
-
-  # Programs for Hyprland
+  # The fast, feature-rich, GPU based terminal emulator
   programs.kitty.enable = true;
+
+  # A highly configurable and lightweight notification daemon.
   services.dunst.enable = true;
-  programs.waybar.enable = true;
-  # services.pipewire.enable = true;
-  # services.wireplumber.enable = true;
-
-
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
