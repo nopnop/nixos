@@ -96,6 +96,7 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.windowManager.i3.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -168,20 +169,6 @@
         home-manager
       ];
     };
-  };
-
-  # home-manager = {
-  #   extraSpecialArgs = { inherit inputs outputs; };
-  #   users = {
-  #     # Import your home-manager configuration
-  #     jponchon = import ../home-manager/home.nix;
-  #   };
-    
-  # };
-
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
   # This setups a SSH server. Very important if you're setting up a headless system.

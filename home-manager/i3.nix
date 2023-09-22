@@ -1,43 +1,59 @@
-{ config, lib, pkgs, ... }:
-
-let 
-  mod = "Mod4";
-in {
-  xsession.windowManager.i3 = {
+{ config, lib, pkgs, ... }: {
+  xsession = {
     enable = true;
-    config = {
-      modifier = mod;
+    windowManager.i3 = rec {
+      enable = true;
+      package = pkgs.i3-gaps;
+      config = {
+        modifier = "Mod4";
+        bars = [ ]; # use polybar instead
 
-      fonts = ["DejaVu Sans Mono, FontAwesome 6"];
+        gaps = {
+          inner = 12;
+          outer = 5;
+          smartGaps = true;
+          smartBorders = "off";
+        };
 
-      keybindings = lib.mkOptionDefault {
-        "${mod}+p" = "exec ${pkgs.dmenu}/bin/dmenu_run";
-        "${mod}+x" = "exec sh -c '${pkgs.maim}/bin/maim -s | xclip -selection clipboard -t image/png'";
-        "${mod}+Shift+x" = "exec sh -c '${pkgs.i3lock}/bin/i3lock -c 222222 & sleep 5 && xset dpms force of'";
+        startup = [
+          { command = "exec firefox"; }
+          # allow polybar to resize itself
+          { command = "systemctl --user restart polybar"; always = true; notification = false; }
+        ];
+        assigns = {
+          "2: web" = [{ class = "^Firefox$"; }];
+          # "4" = [{ class = "^Steam$"; }];
+          # "6" = [{ class = "HexChat$"; }];
+          # "7" = [{ class = "^Discord$"; }];
+        };
 
-        # Focus
-        "${mod}+j" = "focus left";
-        "${mod}+k" = "focus down";
-        "${mod}+l" = "focus up";
-        "${mod}+semicolon" = "focus right";
-
-        # Move
-        "${mod}+Shift+j" = "move left";
-        "${mod}+Shift+k" = "move down";
-        "${mod}+Shift+l" = "move up";
-        "${mod}+Shift+semicolon" = "move right";
-
-        # My multi monitor setup
-        "${mod}+m" = "move workspace to output DP-2";
-        "${mod}+Shift+m" = "move workspace to output DP-5";
+        keybindings = import ./i3-keybindings.nix config.modifier;
       };
-
-      bars = [
-        {
-          position = "bottom";
-          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ${./i3status-rust.toml}";
-        }
-      ];
+      extraConfig = ''
+        for_window [class="^.*"] border pixel 2
+        workspace "2: web" output HDMI-0
+        workspace "7" output HDMI-0
+      '';
     };
+  };
+
+  home.file.".config/polybar/pipewire.sh" = {
+    source = pkgs.callPackage ./polybar.nix { };
+    executable = true;
+  };
+
+  services.polybar = {
+    enable = true;
+    package = pkgs.polybarFull;
+    # config = pkgs.substituteAll {
+    #   src = ./polybar-config;
+    #   #interface = networkInterface;
+    # };
+    script = ''
+      for m in $(polybar --list-monitors | ${pkgs.coreutils}/bin/cut -d":" -f1); do
+        export MONITOR="$m"
+        polybar nord &
+      done
+    '';
   };
 }
