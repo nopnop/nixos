@@ -1,4 +1,3 @@
-# Bash: when in a git repository, show the current branch, indicate if the working directory is clean or not.
 function __set_my_prompt {
     local RESET="\033[0;0m"
     local BLACK="\033[0;30m"
@@ -51,8 +50,3 @@ function __set_my_prompt {
 }
 
 PROMPT_COMMAND='__set_my_prompt'
-
-# Add Z
-source ~/.zshrc-env
-source ~/.zshrc-alias
-source ~/.local/share/z/z.sh

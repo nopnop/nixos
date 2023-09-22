@@ -11,7 +11,7 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    ./bash.nix
+    # ./bash.nix
   ];
 
   nixpkgs = {
@@ -41,13 +41,10 @@
     };
   };
 
-  # TODO: Set your username
   home = {
     username = "jponchon";
     homeDirectory = "/home/jponchon";
   };
-
-
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [ rnix-lsp nixpkgs-fmt ];
@@ -67,12 +64,11 @@
     enable = true;
     userName = "Jean Ponchon";
     userEmail = "jean.ponchon@novadiscovery.com";
-    # core = {
-    #   editor = "nvim";
-    # };
-    # pull = {
-    #   ff = "only";
-    # };
+  };
+
+  programs.bash = {
+    enable = true;
+    initExtra = builtins.readFile ./bash-extra.sh;
   };
 
 
