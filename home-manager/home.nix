@@ -12,6 +12,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     ./bash.nix
+    ./i3.nix
   ];
 
   nixpkgs = {
@@ -66,7 +67,9 @@
     userEmail = "jean.ponchon@novadiscovery.com";
   };
 
+  # A command line tool which helps you navigate faster by learning your habits ⚡e
   # https://github.com/skywind3000/z.lua
+  # https://github.com/nix-community/home-manager/blob/master/modules/programs/z-lua.nix
   programs.z-lua = {
     enable = true;
     options = [ "enhanced" "once" "fzf" ];
