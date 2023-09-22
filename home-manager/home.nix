@@ -66,11 +66,11 @@
     userEmail = "jean.ponchon@novadiscovery.com";
   };
 
-  # programs.bash = {
-  #   enable = true;
-  #   initExtra = builtins.readFile ./bash-extra.sh;
-  # };
-
+  # https://github.com/skywind3000/z.lua
+  programs.z-lua = {
+    enable = true;
+    options = [ "enhanced" "once" "fzf" ];
+  };
 
   # Blazing fast terminal file manager written in Rust, based on async I/O.
   programs.yazi.enable = true;
