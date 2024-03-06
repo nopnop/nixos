@@ -102,12 +102,12 @@
 
     # Enable the GNOME Desktop Environment.
     displayManager.gdm.enable = true;
+    displayManager.sessionPackages = [ pkgs.sway ];
     desktopManager.gnome.enable = true;
 
 
     # Enable i3 
     # windowManager.i3.enable = true;
-
   };
 
   # Security flags

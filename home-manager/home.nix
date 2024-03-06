@@ -46,10 +46,23 @@
   home = {
     username = "jponchon";
     homeDirectory = "/home/jponchon";
+    sessionVariables = {
+      # Set the default editor
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      # Set the default browser
+      BROWSER = "google-chrome-stable";
+      NIXPKGS_ALLOW_UNFREE = "1";
+    };
   };
 
   # Add stuff for your user as you see fit:
-  home.packages = with pkgs; [ rnix-lsp nixpkgs-fmt ];
+  home.packages = with pkgs; [ 
+    rnix-lsp 
+    nixpkgs-fmt 
+    xdg-utils 
+    vlc
+  ];
 
   programs.firefox.enable = true;
   programs.google-chrome.enable = true;
@@ -87,6 +100,23 @@
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
+
+
+  systemd.user.services.polkit-gnome = {
+    Unit = {
+      Description = "PolicyKit Authentication Agent";
+      After = [ "graphical-session-pre.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+
+    Service = {
+      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+    };
+
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";
