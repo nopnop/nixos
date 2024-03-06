@@ -12,7 +12,8 @@
 
     # You can also split up your configuration and import pieces of it here:
     ./bash.nix
-    ./i3.nix
+    # ./i3.nix
+    ./sway.nix
   ];
 
   nixpkgs = {
