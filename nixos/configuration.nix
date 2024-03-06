@@ -93,18 +93,25 @@
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;
+    
     # Configure keymap in X11
-    layout = "fr";
-    xkbVariant = "";
+    xkb = {
+      layout = "fr";
+      variant = "";
+    };
+
     # Enable the GNOME Desktop Environment.
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
 
 
-   # Enable i3 
-    windowManager.i3.enable = true;
+    # Enable i3 
+    # windowManager.i3.enable = true;
 
   };
+
+  # Security flags
+  security.polkit.enable = true; # For sway https://nixos.wiki/wiki/Sway
 
   # Configure console keymap
   console.keyMap = "fr";
