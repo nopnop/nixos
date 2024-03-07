@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-  colorScheme = import ../color-scheme/campbell.nix;
+  colorScheme = import ../color-scheme/catppuccin.nix;
 in
 {
   wayland.windowManager.sway = {
@@ -11,49 +11,49 @@ in
       # Use kitty as default terminal
       terminal = "kitty";
 
-      gaps = {
-        smartBorders = "on";
-        smartGaps = true;
-      };
-      floating.border = 1;
-      window.border = 1;
-      bars = [ ];
+      # gaps = {
+      #   smartBorders = "on";
+      #   smartGaps = true;
+      # };
+      # floating.border = 1;
+      # window.border = 1;
+      # bars = [ ];
       colors = {
         focused = {
-          background = colorScheme.green;
-          border = colorScheme.greenBright;
-          childBorder = colorScheme.green;
-          indicator = colorScheme.green;
+          background = colorScheme.blue;
+          border = colorScheme.blueDark;
+          childBorder = colorScheme.blue;
+          indicator = colorScheme.blue;
           text = colorScheme.black;
         };
         focusedInactive = {
           background = colorScheme.yellow;
-          border = colorScheme.yellowBright;
+          border = colorScheme.yellowDark;
           childBorder = colorScheme.yellow;
           indicator = colorScheme.yellow;
           text = colorScheme.black;
         };
         unfocused = {
           background = colorScheme.magenta;
-          border = colorScheme.magentaBright;
+          border = colorScheme.magentaDark;
           childBorder = colorScheme.magenta;
           indicator = colorScheme.magenta;
           text = colorScheme.black;
         };
         urgent = {
           background = colorScheme.red;
-          border = colorScheme.redBright;
+          border = colorScheme.redDark;
           childBorder = colorScheme.red;
           indicator = colorScheme.red;
           text = colorScheme.black;
         };
         background = colorScheme.black;
       };
-      fonts = {
-        names = [ "Roboto" ];
-        style = "Regular Bold";
-        size = 12.0;
-      };
+      # fonts = {
+      #   names = [ "Roboto" ];
+      #   style = "Regular Bold";
+      #   size = 12.0;
+      # };
 
 
       startup = [
