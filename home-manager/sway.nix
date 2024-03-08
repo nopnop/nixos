@@ -11,43 +11,51 @@ in
       # Use kitty as default terminal
       terminal = "kitty";
 
-      # gaps = {
-      #   smartBorders = "on";
-      #   smartGaps = true;
-      # };
+      gaps = {
+        smartBorders = "on";
+        smartGaps = true;
+      };
       # floating.border = 1;
       # window.border = 1;
       # bars = [ ];
+
       colors = {
         focused = {
-          background = colorScheme.blue;
-          border = colorScheme.blueDark;
-          childBorder = colorScheme.blue;
-          indicator = colorScheme.blue;
-          text = colorScheme.black;
+          border = colorScheme.lavender;
+          background = colorScheme.base;
+          text = colorScheme.text;
+          indicator = colorScheme.rosewater;
+          childBorder = colorScheme.lavender;
         };
         focusedInactive = {
-          background = colorScheme.yellow;
-          border = colorScheme.yellowDark;
-          childBorder = colorScheme.yellow;
-          indicator = colorScheme.yellow;
-          text = colorScheme.black;
+          border = colorScheme.overlay0;
+          background = colorScheme.base;
+          text = colorScheme.text;
+          indicator = colorScheme.rosewater;
+          childBorder = colorScheme.overlay0;
         };
         unfocused = {
-          background = colorScheme.magenta;
-          border = colorScheme.magentaDark;
-          childBorder = colorScheme.magenta;
-          indicator = colorScheme.magenta;
-          text = colorScheme.black;
+          border = colorScheme.overlay0;
+          background = colorScheme.base;
+          text = colorScheme.text;
+          indicator = colorScheme.rosewater;
+          childBorder = colorScheme.overlay0;
         };
         urgent = {
-          background = colorScheme.red;
-          border = colorScheme.redDark;
-          childBorder = colorScheme.red;
-          indicator = colorScheme.red;
-          text = colorScheme.black;
+          border = colorScheme.peach;
+          background = colorScheme.base;
+          text = colorScheme.peach;
+          indicator = colorScheme.overlay0;
+          childBorder = colorScheme.peach;
         };
-        background = colorScheme.black;
+        placeholder = {
+          border = colorScheme.overlay0;
+          background = colorScheme.base;
+          text = colorScheme.text;
+          indicator = colorScheme.overlay0;
+          childBorder = colorScheme.overlay0;
+        };
+        background = colorScheme.base;
       };
       # fonts = {
       #   names = [ "Roboto" ];
