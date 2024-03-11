@@ -11,8 +11,17 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
+    
+    # Bha..
     ./bash.nix
+    
+    # The fast, feature-rich, GPU based terminal emulator
+    ./kitty.nix
+    
+    # Bash prompt with super-power
     ./starship.nix
+
+    # Window manager
     ./sway.nix
     ./waybar.nix
   ];
@@ -58,12 +67,14 @@
   };
 
   # Add stuff for your user as you see fit:
-  home.packages = with pkgs; [ 
-    rnix-lsp 
-    nixpkgs-fmt 
-    xdg-utils 
+  home.packages = with pkgs; [
+    rnix-lsp
+    nixpkgs-fmt
+    xdg-utils
     vlc
+    nil
   ];
+  
 
   programs.firefox.enable = true;
   programs.google-chrome.enable = true;
@@ -93,8 +104,6 @@
   # Blazing fast terminal file manager written in Rust, based on async I/O.
   programs.yazi.enable = true;
 
-  # The fast, feature-rich, GPU based terminal emulator
-  programs.kitty.enable = true;
 
   # A highly configurable and lightweight notification daemon.
   services.dunst.enable = true;
@@ -121,4 +130,5 @@
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";
+
 }

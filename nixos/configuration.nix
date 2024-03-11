@@ -62,8 +62,8 @@
       auto-optimise-store = true;
 
       # For hyprland https://wiki.hyprland.org/Nix/Cachix/
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+      substituters = [ "https://hyprland.cachix.org" ];
+      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
   };
 
@@ -89,11 +89,11 @@
     LC_TELEPHONE = "fr_FR.utf8";
     LC_TIME = "fr_FR.utf8";
   };
-  
+
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;
-    
+
     # Configure keymap in X11
     xkb = {
       layout = "fr";
@@ -134,7 +134,7 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-  
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -166,7 +166,7 @@
       #   # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       # ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      
+
       extraGroups = [ "networkmanager" "wheel" ];
 
       # TODO: Remove me then?
@@ -192,6 +192,20 @@
     };
 
   };
+
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    liberation_ttf
+    fira-code
+    fira-code-symbols
+    mplus-outline-fonts.githubRelease
+    dina-font
+    proggyfonts
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+  ];
+  
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";

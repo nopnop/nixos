@@ -3,6 +3,7 @@ let
   colorScheme = import ../color-scheme/catppuccin.nix;
 in
 {
+  # See https://codeberg.org/annaaurora/home-manager-config/src/branch/main/users/default/sway/default.nix
   wayland.windowManager.sway = {
     enable = true;
     config = rec {
@@ -15,9 +16,19 @@ in
         smartBorders = "on";
         smartGaps = true;
       };
-      # floating.border = 1;
-      # window.border = 1;
+
+      floating.border = 1;
+
+      window.border = 1;
+
       # bars = [ ];
+
+
+      fonts = {
+        names = [ "Roboto" ];
+        style = "Regular Bold";
+        size = 9.0;
+      };
 
       colors = {
         focused = {
@@ -57,16 +68,21 @@ in
         };
         background = colorScheme.base;
       };
-      # fonts = {
-      #   names = [ "Roboto" ];
-      #   style = "Regular Bold";
-      #   size = 12.0;
-      # };
+
 
 
       startup = [
         # Launch Chrome on start
         { command = "google-chrome-stable"; }
+
+        # Status bar: waybar
+        { command = "waybar"; }
+        # Notification daemon
+        { command = "mako"; }
+        # Polkit
+        { command = "/run/current-system/sw/libexec/polkit-gnome-authentication-agent-1"; }
+        # # Idle
+        # { command = "$HOME/.config/sway/idle.sh"; }
       ];
 
       input = {
@@ -117,10 +133,46 @@ in
         "${modifier}+Shift+agrave" = "move container to workspace number 10";
 
         "${modifier}+Shift+Return" = "exec google-chrome-stable";
+
+
+        # Toggle deafen
+        "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+        # Toggle mute
+        "XF86AudioMute+Ctrl" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && ffmpeg -y -f lavfi -i 'sine=frequency=200:duration=0.1' /tmp/sound.ogg && play /tmp/sound.ogg";
+        # Raise sink (speaker, headphones) volume
+        "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +2%";
+        # Lower sink (microphone) volume
+        "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -2%";
+        # Spotify
+        ## Play/pause spotify
+        "XF86AudioPlay" = "exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause";
+        ## Play previous spotify track
+        "XF86AudioPrev" = "exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous";
+        "XF86Launch5" = "exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous";
+        ## Play next spotify track
+        "XF86AudioNext" = "exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next";
+        "XF86Tools" = "exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next";
       };
 
     };
 
 
   };
+  home.packages = with pkgs; [
+    tesseract4
+    waybar
+    dmenu-wayland
+    ulauncher
+    wofi
+    wofi-emoji
+    slurp
+    grim
+    swappy
+    swaylock-effects
+    notify-desktop
+    mako
+    libappindicator
+    gnome.zenity
+    pulseaudio
+  ];
 }

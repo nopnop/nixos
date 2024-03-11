@@ -5,7 +5,6 @@ in
 {
   programs.waybar = {
     enable = true;
-  
-
+    # settings = { };
   };
 }
