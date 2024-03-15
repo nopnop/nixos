@@ -73,14 +73,14 @@ in
 
       startup = [
         # Launch Chrome on start
-        { command = "google-chrome-stable"; }
+        # { command = "google-chrome-stable"; }
 
         # Status bar: waybar
         { command = "waybar"; }
         # Notification daemon
-        { command = "mako"; }
+        # { command = "mako"; }
         # Polkit
-        { command = "/run/current-system/sw/libexec/polkit-gnome-authentication-agent-1"; }
+        # { command = "/run/current-system/sw/libexec/polkit-gnome-authentication-agent-1"; }
         # # Idle
         # { command = "$HOME/.config/sway/idle.sh"; }
       ];
@@ -159,20 +159,20 @@ in
 
   };
   home.packages = with pkgs; [
-    tesseract4
-    waybar
-    dmenu-wayland
-    ulauncher
-    wofi
-    wofi-emoji
-    slurp
-    grim
-    swappy
-    swaylock-effects
-    notify-desktop
-    mako
-    libappindicator
-    gnome.zenity
-    pulseaudio
+    # tesseract4
+    # waybar
+    # dmenu-wayland
+    # ulauncher
+    # wofi
+    # wofi-emoji
+    # slurp
+    # grim
+    # swappy
+    # swaylock-effects
+    # notify-desktop
+    # mako
+    # libappindicator
+    # gnome.zenity
+    # pulseaudio
   ];
 }

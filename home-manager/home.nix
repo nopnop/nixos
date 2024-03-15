@@ -11,13 +11,13 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    
+
     # Bha..
     ./bash.nix
-    
+
     # The fast, feature-rich, GPU based terminal emulator
     ./kitty.nix
-    
+
     # Bash prompt with super-power
     ./starship.nix
 
@@ -68,13 +68,14 @@
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
-    rnix-lsp
-    nixpkgs-fmt
-    xdg-utils
-    vlc
+    htop
     nil
+    nixpkgs-fmt
+    rnix-lsp
+    vlc
+    xdg-utils
   ];
-  
+
 
   programs.firefox.enable = true;
   programs.google-chrome.enable = true;
@@ -104,9 +105,11 @@
   # Blazing fast terminal file manager written in Rust, based on async I/O.
   programs.yazi.enable = true;
 
-
   # A highly configurable and lightweight notification daemon.
   services.dunst.enable = true;
+
+  # Music player server
+  services.mpd.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
