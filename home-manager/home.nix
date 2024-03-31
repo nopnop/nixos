@@ -71,7 +71,6 @@
     htop
     nil
     nixpkgs-fmt
-    rnix-lsp
     vlc
     xdg-utils
   ];

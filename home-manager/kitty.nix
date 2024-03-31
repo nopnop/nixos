@@ -5,7 +5,7 @@
     enable = true;
     font = {
       name =  "Roboto" ;
-      size = 9.0;
+      size = 8.0;
     };
   };
 }
