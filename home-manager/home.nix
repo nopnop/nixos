@@ -107,9 +107,6 @@
   # A highly configurable and lightweight notification daemon.
   services.dunst.enable = true;
 
-  # Music player server
-  services.mpd.enable = true;
-
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
