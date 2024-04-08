@@ -102,7 +102,8 @@
 
     # Enable the GNOME Desktop Environment.
     displayManager.gdm.enable = true;
-    displayManager.sessionPackages = [ pkgs.sway ];
+    displayManager.sessionPackages = [ pkgs.sway pkgs.hyprland ];
+    displayManager.defaultSession = "sway";
     desktopManager.gnome.enable = true;
 
 
@@ -112,6 +113,7 @@
 
   # Security flags
   security.polkit.enable = true; # For sway https://nixos.wiki/wiki/Sway
+  security.pam.services.swaylock = {};
 
   # Configure console keymap
   console.keyMap = "fr";
@@ -207,6 +209,7 @@
   ];
   
   programs.light.enable = true;
+  programs.hyprland.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";

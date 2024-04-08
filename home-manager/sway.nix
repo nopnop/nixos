@@ -3,6 +3,10 @@ let
   colorScheme = import ../color-scheme/catppuccin.nix;
 in
 {
+
+  programs.swaylock.enable = true;
+
+  # Enable the wayland window manager sway
   # See https://codeberg.org/annaaurora/home-manager-config/src/branch/main/users/default/sway/default.nix
   wayland.windowManager.sway = {
     enable = true;
@@ -80,7 +84,7 @@ in
         # Notification daemon
         # { command = "mako"; }
         # Polkit
-        # { command = "/run/current-system/sw/libexec/polkit-gnome-authentication-agent-1"; }
+        # { command =  "/run/current-system/sw/libexec/polkit-gnome-authentication-agent-1"; }
         # # Idle
         # { command = "$HOME/.config/sway/idle.sh"; }
       ];
