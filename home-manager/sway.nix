@@ -3,8 +3,30 @@ let
   colorScheme = import ../color-scheme/catppuccin.nix;
 in
 {
+  imports = [
+    ./swayidle.nix
+  ];
 
-  programs.swaylock.enable = true;
+  # Enable swaylock
+  programs.swaylock = {
+    enable = true;
+    settings = {
+      color = colorScheme.base;
+      # ring-color = colorScheme.rosewater;
+      # line-color = colorScheme.lavender;
+      # text-color = colorScheme.text;
+      # inside-color = colorScheme.base;
+      # key-hl-color = colorScheme.rosewater;
+      # ring-width = 3;
+      # line-width = 3;
+      # text-size = 20;
+      # font = "Roboto";
+      ignore-empty-password = true;
+      daemonize = true;
+
+    };
+  };
+
 
   # Enable the wayland window manager sway
   # See https://codeberg.org/annaaurora/home-manager-config/src/branch/main/users/default/sway/default.nix
@@ -137,6 +159,13 @@ in
         "${modifier}+Shift+agrave" = "move container to workspace number 10";
 
         "${modifier}+Shift+Return" = "exec google-chrome-stable";
+
+        # Activate waylock on Mod+Escape
+        "${modifier}+Escape" = "exec swaylock";
+
+        # Brightness
+        "XF86MonBrightnessDown" = "exec light -U 10";
+        "XF86MonBrightnessUp" = "exec light -A 10";
 
 
         # Toggle deafen

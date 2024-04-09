@@ -110,6 +110,12 @@
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
+  # Start gnome-keyring-daemon
+  services.gnome-keyring.enable = true;
+  
+  services.flameshot.enable = true;
+
+  
 
   systemd.user.services.polkit-gnome = {
     Unit = {
