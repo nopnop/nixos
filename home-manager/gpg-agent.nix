@@ -6,6 +6,6 @@
     enableSshSupport = true;
     defaultCacheTtl = 60 * 60 * 4;
     maxCacheTtl = 60 * 60 * 24;
-    pinentryPackage = pkgs.pinentry-curses;
+    pinentryPackage = pkgs.pinentry-gtk2;
   };
 }
