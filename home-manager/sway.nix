@@ -135,6 +135,11 @@ in
 
       # Extends the default keybindings with mkOptionDefault
       keybindings = lib.mkOptionDefault {
+        # Launcher & apps
+        "${modifier}+Alt+Space" = lib.mkForce "exec ${pkgs.ulauncher}/bin/ulauncher";
+        "${modifier}+Shift+Return" = "exec ${pkgs.google-chrome}/bin/google-chrome-stable";
+        "${modifier}+Shift+n" = "exec nautilus";
+
         # Add keybindings for french keyboard layout
         "${modifier}+ampersand" = "workspace number 1";
         "${modifier}+eacute" = "workspace number 2";
@@ -158,14 +163,16 @@ in
         "${modifier}+Shift+ccedilla" = "move container to workspace number 9";
         "${modifier}+Shift+agrave" = "move container to workspace number 10";
 
-        "${modifier}+Shift+Return" = "exec google-chrome-stable";
 
-        # Activate waylock on Mod+Escape
-        "${modifier}+Escape" = "exec swaylock";
+        # Lock / suspend / hibernate
+        "${modifier}+Escape" = "exec ${pkgs.swaylock}/bin/swaylock";
+        "${modifier}+Shift+Escape" = "exec sh -c '${pkgs.swaylock}/bin/swaylock && systemctl suspend'";
+        "${modifier}+Ctrl+Shift+Escape" = "exec sh -c '${pkgs.swaylock}/bin/swaylock && systemctl hibernate'";
+
 
         # Brightness
-        "XF86MonBrightnessDown" = "exec light -U 10";
-        "XF86MonBrightnessUp" = "exec light -A 10";
+        "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U 10";
+        "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 10";
 
 
         # Toggle deafen
@@ -192,20 +199,6 @@ in
 
   };
   home.packages = with pkgs; [
-    # tesseract4
-    # waybar
-    # dmenu-wayland
-    # ulauncher
-    # wofi
-    # wofi-emoji
-    # slurp
-    # grim
-    # swappy
-    # swaylock-effects
-    # notify-desktop
-    # mako
-    # libappindicator
-    # gnome.zenity
-    # pulseaudio
+    ulauncher
   ];
 }

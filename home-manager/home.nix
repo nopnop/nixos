@@ -24,6 +24,9 @@
     # Window manager
     ./sway.nix
     ./waybar.nix
+
+    # Ggp agent
+    ./gpg-agent.nix
   ];
 
   nixpkgs = {
@@ -63,19 +66,42 @@
       # Set the default browser
       BROWSER = "google-chrome-stable";
       NIXPKGS_ALLOW_UNFREE = "1";
+      SSH_AUTH_SOCK = "\${SSH_AUTH_SOCK:-$XDG_RUNTIME_DIR/ssh-agent.socket}";
     };
   };
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
     htop
+    just
     nil
     nixpkgs-fmt
     vlc
     xdg-utils
+
+    # Grim and slurp are used to take screenshots
+    grim
+    slurp
+
+    # Small drawing program:
+    drawing
+
+
+    # ulauncher
+    # wofi
+    # wofi-emoji
+    # slurp
+    # grim
+    # swappy
+    # swaylock-effects
+    # notify-desktop
+    # mako
+    # libappindicator
+    # gnome.zenity
+    # pulseaudio
   ];
 
-
+  programs.gpg.enable = true;
   programs.firefox.enable = true;
   programs.google-chrome.enable = true;
   programs.vscode.enable = true;
@@ -111,9 +137,13 @@
   systemd.user.startServices = "sd-switch";
 
   # Start gnome-keyring-daemon
-  services.gnome-keyring.enable = true;
+  # services.gnome-keyring.enable = true;
   
+  # Flameshot does not work with sway but there is some workaround to explore
+  # See https://forum.garudalinux.org/t/flameshot-not-working-in-sway-typing-flameshot-gui-hangs-in-the-terminal/24070/8
+  # in the meantime consider using grim and slurp
   services.flameshot.enable = true;
+
 
   
 

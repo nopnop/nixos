@@ -115,6 +115,9 @@
   security.polkit.enable = true; # For sway https://nixos.wiki/wiki/Sway
   security.pam.services.swaylock = {};
 
+  # Enable GNOME services (needed for gpg-agent pinentry gnome3) 
+  services.dbus.packages = [ pkgs.gcr ];
+
   # Configure console keymap
   console.keyMap = "fr";
 
