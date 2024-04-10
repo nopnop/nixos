@@ -60,13 +60,15 @@
     username = "jponchon";
     homeDirectory = "/home/jponchon";
     sessionVariables = {
-      # Set the default editor
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-      # Set the default browser
-      BROWSER = "google-chrome-stable";
-      NIXPKGS_ALLOW_UNFREE = "1";
-      SSH_AUTH_SOCK = "\${SSH_AUTH_SOCK:-$XDG_RUNTIME_DIR/ssh-agent.socket}";
+      # TODO: None of these are working on sway. Investigate why: could it be the 
+      #       way the sway session is started?
+      #       In the meantime, I enforce my default in bash-extra.sh
+      # # Set the default editor
+      # EDITOR = "nvim";
+      # VISUAL = "nvim";
+      # # Set the default browser
+      # BROWSER = "google-chrome-stable";
+      # NIXPKGS_ALLOW_UNFREE = "1";
     };
   };
 
@@ -118,6 +120,9 @@
     userName = "Jean Ponchon";
     userEmail = "jean.ponchon@novadiscovery.com";
   };
+
+  programs.ssh.enable = true;
+  services.ssh-agent.enable = true;
 
   # A command line tool which helps you navigate faster by learning your habits ⚡e
   # https://github.com/skywind3000/z.lua
