@@ -18,3 +18,12 @@ And many other tools.
 - [nix-dev-home](https://github.com/juspay/nix-dev-home) - A getting started hm config 
 - [gpg agent & ssh](https://gist.github.com/mcattarinussi/834fc4b641ff4572018d0c665e5a94d3) - How to setup gpg + ssh
 - [Yubikey & GPG](https://support.yubico.com/hc/en-us/articles/360013790259-Using-Your-YubiKey-with-OpenPGP) - Using Your YubiKey with OpenPGP
+- [Nixpkgs search](https://search.nixos.org/packages)
+
+
+## Troubleshooting
+
+### Update gpg-connect-agent
+
+Ask me again for my password instead of failing:
+`gpg-connect-agent updatestartuptty /bye`

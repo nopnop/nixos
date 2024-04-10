@@ -94,13 +94,13 @@
     # wofi-emoji
     # slurp
     # grim
-    # swappy
+    swappy
     # swaylock-effects
     # notify-desktop
     # mako
     # libappindicator
     # gnome.zenity
-    # pulseaudio
+    pulseaudio
   ];
 
   programs.gpg.enable = true;

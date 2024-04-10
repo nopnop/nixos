@@ -139,6 +139,10 @@ in
         "${modifier}+Alt+Space" = lib.mkForce "exec ${pkgs.ulauncher}/bin/ulauncher";
         "${modifier}+Shift+Return" = "exec ${pkgs.google-chrome}/bin/google-chrome-stable";
         "${modifier}+Shift+n" = "exec nautilus";
+  
+        # Screenshot on print key
+        "${modifier}+Print" = "exec sh -c 'grim -g \"\$(slurp)\" - | swappy -f -'";
+        
 
         # Add keybindings for french keyboard layout
         "${modifier}+ampersand" = "workspace number 1";
@@ -162,6 +166,12 @@ in
         "${modifier}+Shift+underscore" = "move container to workspace number 8";
         "${modifier}+Shift+ccedilla" = "move container to workspace number 9";
         "${modifier}+Shift+agrave" = "move container to workspace number 10";
+
+        # Move workspace around
+        "${modifier}+Ctrl+Shift+Left" = "move workspace to output left";
+        "${modifier}+Ctrl+Shift+Right" = "move workspace to output right";
+        "${modifier}+Ctrl+Shift+Up" = "move workspace to output up";
+        "${modifier}+Ctrl+Shift+Down" = "move workspace to output down";
 
 
         # Lock / suspend / hibernate

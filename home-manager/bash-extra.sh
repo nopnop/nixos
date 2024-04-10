@@ -14,3 +14,10 @@ export VISUAL="nvim";
 # Set the default browser
 export BROWSER="google-chrome-stable";
 export NIXPKGS_ALLOW_UNFREE="1";
+
+# Few extra aliases
+alias ll="ls -lh";
+alias la="ls -a";
+alias lla="ls -lah";
+alias llt="ls -lhtr";
+alias nd="nix develop"
