@@ -1,11 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
-  programs.gpg-agent = {
+  services.gpg-agent = {
     enable = true;
-    enableSSHSupport = true;
+    enableSshSupport = true;
     defaultCacheTtl = 60 * 60 * 4;
     maxCacheTtl = 60 * 60 * 24;
-
+    pinentryPackage = pkgs.pinentry-curses;
   };
 }
