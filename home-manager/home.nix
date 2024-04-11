@@ -75,7 +75,6 @@
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
     htop
-    just
     nil
     nixpkgs-fmt
     vlc
@@ -84,9 +83,11 @@
     # Grim and slurp are used to take screenshots
     grim
     slurp
+    swappy
 
-    # Small drawing program:
+    # SmaEdition and drawing program:
     drawing
+    xournal
 
     # Yubikey
     # see too https://nixos.wiki/wiki/Yubikey
@@ -96,17 +97,20 @@
     # Password manager
     pass
 
-    # ulauncher
-    # wofi
-    # wofi-emoji
-    # slurp
-    # grim
-    swappy
-    # swaylock-effects
-    # notify-desktop
-    # mako
-    # libappindicator
-    # gnome.zenity
+    # Disk utiilies
+    dua
+    duf
+
+    # Dev utilities
+    just
+    nodejs_20
+    podman
+    podman-compose
+    
+    docker-compose
+
+
+    # System utilities
     pulseaudio
   ];
 

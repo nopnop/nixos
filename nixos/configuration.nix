@@ -152,6 +152,13 @@
   services.udev.packages = [ pkgs.yubikey-personalization ];
   services.pcscd.enable = true;
 
+  # Docker
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
+
   # ----------------------------------------------------------------------
 
 
@@ -176,7 +183,7 @@
       # ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
 
-      extraGroups = [ "networkmanager" "wheel" "video" ];
+      extraGroups = [ "networkmanager" "wheel" "video" "docker" ];
 
       # TODO: Remove me then?
       packages = with pkgs; [
