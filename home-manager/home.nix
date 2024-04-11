@@ -91,7 +91,7 @@
     # Yubikey
     # see too https://nixos.wiki/wiki/Yubikey
     yubikey-manager
-    yubikey-manager-qtk
+    yubikey-manager-qt
 
     # Password manager
     pass
