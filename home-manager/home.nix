@@ -88,6 +88,13 @@
     # Small drawing program:
     drawing
 
+    # Yubikey
+    # see too https://nixos.wiki/wiki/Yubikey
+    yubikey-manager
+    yubikey-manager-qtgpg 
+
+    # Password manager
+    pass
 
     # ulauncher
     # wofi
@@ -150,8 +157,9 @@
   services.flameshot.enable = true;
 
 
-  
-
+  # Enable the PolicyKit Authentication Agent
+  # https://wiki.archlinux.org/index.php/Polkit#Authentication_agents
+  # This seems involved in susped/resume effectivess.. (to be tested more)
   systemd.user.services.polkit-gnome = {
     Unit = {
       Description = "PolicyKit Authentication Agent";
