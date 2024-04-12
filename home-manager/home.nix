@@ -191,14 +191,7 @@
   };
 
   # Symlink a few hard-coded paths to the home directory:
-  # home.file."foobar" = {
-  #   source = ../home/noj/foobar;
-  #   target = "foobar";
-  # };
-  # xdg.configFile."nvim/init.vim" = {
-  #   source = ./nvim/init.vim;
-  #   target = ".config/nvim/init.vim";
-  # };
+
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";
