@@ -21,3 +21,13 @@ alias la="ls -a";
 alias lla="ls -lah";
 alias llt="ls -lhtr";
 alias nd="nix develop"
+
+
+# The fuck
+eval "$(thefuck --alias)"
+
+# Load the dev env variables from pass
+loaddev() {
+  export NPM_TOKEN=$(pass show nova/npm-token)
+  export TIPTAP_PRO_TOKEN=$(pass show nova/tiptap-pro-token)
+}
