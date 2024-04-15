@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   colorScheme = import ../color-scheme/catppuccin.nix;
+  background = ../home/noj/Pictures/Wallpapers/nova2023.png;
 in
 {
   imports = [
@@ -27,6 +28,11 @@ in
     };
   };
 
+  home = {
+    file = {
+      ".config/sway/background.png".source = background;
+    };
+  };
 
   # Enable the wayland window manager sway
   # See https://codeberg.org/annaaurora/home-manager-config/src/branch/main/users/default/sway/default.nix
@@ -125,6 +131,11 @@ in
           click_method = "clickfinger";
         };
       };
+
+       output = {
+        "*" = { bg = "${background} fill #1d2021"; };
+       };
+
 
 
       # Remoe the titlebar
