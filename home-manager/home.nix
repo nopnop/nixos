@@ -25,8 +25,11 @@
     ./sway.nix
     ./waybar.nix
 
-    # Ggp agent
+    # Security stuff, GPG / SSH / Yubikey & Co.
     ./gpg-agent.nix
+
+    # Dev stuff
+    ./git.nix
   ];
 
   nixpkgs = {
@@ -136,12 +139,6 @@
     defaultEditor = true;
   };
 
-  programs.git = {
-    enable = true;
-    userName = "Jean Ponchon";
-    userEmail = "jean.ponchon@novadiscovery.com";
-  };
-
   programs.ssh.enable = true;
   services.ssh-agent.enable = true;
 
@@ -164,7 +161,7 @@
 
   # Start gnome-keyring-daemon
   # services.gnome-keyring.enable = true;
-  
+
   # Flameshot does not work with sway but there is some workaround to explore
   # See https://forum.garudalinux.org/t/flameshot-not-working-in-sway-typing-flameshot-gui-hangs-in-the-terminal/24070/8
   # in the meantime consider using grim and slurp
