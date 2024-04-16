@@ -1,9 +1,15 @@
 { config, lib, pkgs, ... }:
 {
+
   programs.git = {
     enable = true;
     userName = "Jean Ponchon";
     userEmail = "jean.ponchon@novadiscovery.com";
+    extraConfig = {
+      core.editor = "${pkgs.neovim}/bin/nvim";
+      init.defaultBranch = "main";
+      pull.ff-only = true;
+    };
     aliases = {
       amend = "commit --amend";
       amend-noedit = "commit --amend --no-edit";
@@ -16,7 +22,7 @@
       diff-staged = "diff --cached";
       diff-stat = "diff --stat --ignore-space-change -r";
       diff-upstream = "!git fetch origin && git diff main origin/main";
-      fixup = "!git log --oneline --decorate | fzf | awk '{ print $1 }' | xargs -I{} git commit --fixup={}";
+      fixup = "!git log --oneline --decorate | fzf --color | awk '{ print $1 }' | xargs -I{} git commit --fixup={}";
       lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
       lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
       others = "ls-files --others --ignored --exclude-from=.gitignore";
