@@ -102,13 +102,13 @@
 
     # Enable the GNOME Desktop Environment.
     displayManager.gdm.enable = true;
-    displayManager.sessionPackages = [ pkgs.sway pkgs.hyprland ];
-    displayManager.defaultSession = "sway";
     desktopManager.gnome.enable = true;
 
+  };
 
-    # Enable i3 
-    # windowManager.i3.enable = true;
+  services.displayManager = {
+    sessionPackages = [ pkgs.sway pkgs.hyprland ];
+    defaultSession = "sway";
   };
 
   # Security flags

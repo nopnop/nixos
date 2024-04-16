@@ -107,6 +107,7 @@
     # Dev utilities
     just
     nodejs_20
+    prefetch-npm-deps # To compute package-lock.json sha256
     podman
     podman-compose
     docker-compose

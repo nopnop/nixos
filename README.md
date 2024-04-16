@@ -20,6 +20,7 @@ And many other tools.
 - [Yubikey + GPG + SSH](https://github.com/drduh/YubiKey-Guide?tab=readme-ov-file#passphrase) - Ultra detailed
 - [Yubikey & GPG](https://support.yubico.com/hc/en-us/articles/360013790259-Using-Your-YubiKey-with-OpenPGP) - Using Your YubiKey with OpenPGP
 - [Nixpkgs search](https://search.nixos.org/packages)
+- [impermanence](https://github.com/nix-community/impermanence) - Cleanup everything, keep only what's needed.
 
 
 ## Troubleshooting

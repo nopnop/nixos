@@ -21,6 +21,7 @@ alias la="ls -a";
 alias lla="ls -lah";
 alias llt="ls -lhtr";
 alias nd="nix develop"
+alias wifi="nmtui"
 
 
 # The fuck
