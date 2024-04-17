@@ -26,6 +26,7 @@
       lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
       lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
       others = "ls-files --others --ignored --exclude-from=.gitignore";
+      squash = "rebase --autosquash -i";
       rm-untracked = "clean -df";
       s = "status";
       search-files = "log --oneline --name-status --source --all -S";

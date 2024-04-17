@@ -20,8 +20,9 @@ alias ll="ls -lh";
 alias la="ls -a";
 alias lla="ls -lah";
 alias llt="ls -lhtr";
-alias nd="nix develop"
-alias wifi="nmtui"
+alias nd="nix develop";
+alias wifi="nmtui";
+alias eslintfix="git show HEAD --format='' --name-status | grep -E '^[AM]' | grep -E '\.(vue|ts)$' | cut -f2 | xargs node_modules/.bin/eslint --fix";
 
 
 # The fuck
