@@ -99,6 +99,7 @@
 
     # Password manager
     pass
+    sops
 
     # Disk utiilies
     dua
@@ -113,6 +114,7 @@
     docker-compose
     lazydocker
     lazygit
+    jq
 
     # Terminal utilities
     thefuck
