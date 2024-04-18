@@ -24,6 +24,7 @@ in
       # font = "Roboto";
       ignore-empty-password = true;
       daemonize = true;
+      image = "${background}";
 
     };
   };
