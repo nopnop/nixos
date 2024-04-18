@@ -121,13 +121,12 @@
     tldr
     browsh # Browser
 
-
     # Sytem utilities
     btop
 
-
-    # System utilities
+    # Audio
     pulseaudio
+    alsa-utils
   ];
 
   programs.gpg.enable = true;
