@@ -4,8 +4,8 @@
   services.swayidle = {
     enable = true;
     timeouts = [
-      { timeout = 300; command = "${pkgs.swaylock}/bin/swaylock -fF"; }
-      { timeout = 400; command = "systemctl suspend"; }
+      { timeout = 60; command = "${pkgs.swaylock}/bin/swaylock -fF"; }
+      { timeout = 70; command = "${pkgs.systemd}/bin/systemctl suspend"; }
     ];
     events = [
       { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -fF"; }
