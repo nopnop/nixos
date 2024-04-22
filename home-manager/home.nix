@@ -127,6 +127,9 @@
     # Audio
     pulseaudio
     alsa-utils
+
+    # Networking
+    croc # Move file around
   ];
 
   programs.gpg.enable = true;
