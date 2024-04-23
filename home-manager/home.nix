@@ -88,9 +88,10 @@
     slurp
     swappy
 
-    # SmaEdition and drawing program:
+    # Edition and drawing program:
     drawing
     xournal
+    krita
 
     # Yubikey
     # see too https://nixos.wiki/wiki/Yubikey
@@ -107,6 +108,7 @@
 
     # Dev utilities
     just
+    deno
     nodejs_20
     prefetch-npm-deps # To compute package-lock.json sha256
     podman
@@ -115,6 +117,7 @@
     lazydocker
     lazygit
     jq
+    xclip
 
     # Terminal utilities
     thefuck

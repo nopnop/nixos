@@ -32,4 +32,5 @@ eval "$(thefuck --alias)"
 loaddev() {
   export NPM_TOKEN=$(pass show nova/npm-token)
   export TIPTAP_PRO_TOKEN=$(pass show nova/tiptap-pro-token)
+  export PATH="~/mutable_node_modules/bin:$PATH" # Temporary fix for the breaking change introduced by pnpm v9 unavailable in nix
 }
