@@ -124,6 +124,8 @@
     tldr
     browsh # Browser
     ripgrep
+    sd # Simpler sed
+    fd # Simpler find
 
     # Sytem utilities
     btop
