@@ -123,6 +123,7 @@
     thefuck
     tldr
     browsh # Browser
+    ripgrep
 
     # Sytem utilities
     btop
