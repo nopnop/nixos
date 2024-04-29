@@ -21,7 +21,6 @@ in
       # ring-width = 3;
       # line-width = 3;
       # text-size = 20;
-      # font = "Roboto";
       ignore-empty-password = true;
       daemonize = true;
       image = "${background}";

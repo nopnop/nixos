@@ -66,12 +66,12 @@
       # TODO: None of these are working on sway. Investigate why: could it be the 
       #       way the sway session is started?
       #       In the meantime, I enforce my default in bash-extra.sh
-      # # Set the default editor
-      # EDITOR = "nvim";
-      # VISUAL = "nvim";
-      # # Set the default browser
-      # BROWSER = "google-chrome-stable";
-      # NIXPKGS_ALLOW_UNFREE = "1";
+      # Set the default editor
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      # Set the default browser
+      BROWSER = "google-chrome-stable";
+      NIXPKGS_ALLOW_UNFREE = "1";
     };
   };
 
@@ -126,6 +126,7 @@
 
     # Sytem utilities
     btop
+    wdisplays # Manage display
 
     # Audio
     pulseaudio

@@ -32,5 +32,15 @@ eval "$(thefuck --alias)"
 loaddev() {
   export NPM_TOKEN=$(pass show nova/npm-token)
   export TIPTAP_PRO_TOKEN=$(pass show nova/tiptap-pro-token)
-  export PATH="~/mutable_node_modules/bin:$PATH" # Temporary fix for the breaking change introduced by pnpm v9 unavailable in nix
+  export PATH="$HOME/mutable_node_modules/bin:$PATH" # Temporary fix for the breaking change introduced by pnpm v9 unavailable in nix
+  export PATH="$HOME/.deno/bin:$PATH" # Temporary fix for the breaking change introduced by pnpm v9 unavailable in nix
+}
+
+
+nr() {
+  nix run nixpkgs#$@
+}
+
+ns() {
+  nix shell nixpkgs#$@
 }

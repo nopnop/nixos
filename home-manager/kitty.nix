@@ -4,8 +4,9 @@
   programs.kitty = {
     enable = true;
     font = {
-      name =  "Roboto" ;
-      size = 8.0;
+      name =  "FiraCode Nerd Font" ;
+      size = 9.0;
     };
+
   };
 }
