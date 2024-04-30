@@ -15,6 +15,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nova.url = "git+ssh://git@git.novadiscovery.net/sys/doctor";
+
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
 
@@ -23,7 +25,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland, nova, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -33,6 +35,14 @@
         "aarch64-darwin"
         "x86_64-darwin"
       ];
+      novaUserProfile = {
+        firstname = "Jean";
+        lastname = "Ponchon";
+        username = "jponchon";
+        business_unit = "sse";
+        gitlabId = "jean.ponchon@novadiscovery.com";
+      };
+
     in
     rec {
       # Your custom packages
@@ -78,7 +88,7 @@
         # Replaced with your username@hostname
         "jponchon@n00085" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs; };
+          extraSpecialArgs = { inherit inputs outputs novaUserProfile; };
           modules = [
             # > Our main home-manager configuration file <
             ./home-manager/home.nix
