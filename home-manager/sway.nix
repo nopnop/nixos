@@ -47,9 +47,11 @@ in
       gaps = {
         smartBorders = "on";
         smartGaps = true;
+        # inner = 10;
+        # outer = 10;
       };
 
-      floating.border = 1;
+      floating.border = 0;
 
       window.border = 1;
 
@@ -204,15 +206,11 @@ in
         "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +2%";
         # Lower sink (microphone) volume
         "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -2%";
-        # Spotify
-        ## Play/pause spotify
-        "XF86AudioPlay" = "exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause";
-        ## Play previous spotify track
-        "XF86AudioPrev" = "exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous";
-        "XF86Launch5" = "exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous";
-        ## Play next spotify track
-        "XF86AudioNext" = "exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next";
-        "XF86Tools" = "exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next";
+        
+        # Media player controler https://wiki.archlinux.org/title/MPRIS
+        "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+        "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
+        "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
       };
 
     };
@@ -221,5 +219,6 @@ in
   };
   home.packages = with pkgs; [
     ulauncher
+    playerctl
   ];
 }

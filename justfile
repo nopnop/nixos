@@ -4,15 +4,21 @@
 # See # See https://just.systems/man/en/
 
 # Just switch home-manager configuration
-default: hm-switch
+default: switch
 
 # Build and activate the home-manager configuration: the default target.
-hm-switch:
+switch:
   home-manager switch --flake .#jponchon@n00085
 
 # Build the home-manager configuration without activating it.
-hm-build:
+build:
   home-manager build --flake .#jponchon@n00085
+
+# Build the home-manager configuration without activating it.
+news:
+  home-manager news --flake .#jponchon@n00085
+
+info: news
 
 # Build the NixOS configuration without activating it.
 nixos-build:
@@ -21,3 +27,7 @@ nixos-build:
 # Build and activate the NixOS configuration.
 nixos-switch:
   sudo nixos-rebuild switch --flake . 
+
+# Update the flake registry.
+update:
+  nix flake update

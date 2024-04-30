@@ -30,6 +30,10 @@
 
     # Dev stuff
     ./git.nix
+
+
+    # Nova devops profile:
+    # inputs.nova.hmProfiles.dev
   ];
 
   nixpkgs = {
@@ -118,6 +122,8 @@
     lazygit
     jq
     xclip
+    sqlite
+    awscli
 
     # Terminal utilities
     thefuck
@@ -126,6 +132,7 @@
     ripgrep
     sd # Simpler sed
     fd # Simpler find
+    rlwrap # Proper readline wrap with history (usfull for sqlite)
 
     # Sytem utilities
     btop
@@ -150,6 +157,14 @@
     enable = true;
     defaultEditor = true;
   };
+  programs.spotify-player = {
+    enable = true;
+    settings = {
+      cover_img_width = 10;
+      cover_img_length = 18;
+    };
+  };
+
 
   programs.ssh.enable = true;
   services.ssh-agent.enable = true;

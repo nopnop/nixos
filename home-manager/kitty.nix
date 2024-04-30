@@ -8,5 +8,7 @@
       size = 9.0;
     };
 
+    theme = "Catppuccin-Mocha";
+
   };
 }
