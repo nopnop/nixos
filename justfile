@@ -20,6 +20,9 @@ news:
 
 info: news
 
+switch-local-doctor:
+  home-manager switch --flake .#jponchon@n00085 --override-input nova ~/Git/doctor/
+
 # Build the NixOS configuration without activating it.
 nixos-build:
   sudo nixos-rebuild build --flake . 

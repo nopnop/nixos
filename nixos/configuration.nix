@@ -61,9 +61,9 @@
       # Deduplicate and optimize nix store
       auto-optimise-store = true;
 
-      # For hyprland https://wiki.hyprland.org/Nix/Cachix/
-      substituters = [ "https://hyprland.cachix.org" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+      # For nova: add cache nix
+      substituters = [  "s3://devops-ci-infra-prod-caching-nix?region=eu-central-1&profile=nix-daemon" ];
+      trusted-public-keys = [ ];
     };
   };
 
@@ -107,7 +107,7 @@
   };
 
   services.displayManager = {
-    sessionPackages = [ pkgs.sway pkgs.hyprland ];
+    sessionPackages = [ pkgs.sway ];
     defaultSession = "sway";
   };
 
@@ -172,7 +172,15 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   # System-wide user settings (groups, etc), add more users as needed.
+  
+
   users.users = {
+    root = {
+      # Example: import a file from another flake 
+      # Here ${ inputs.nova } is the path to the nova flake
+      # imports = [ "${ inputs.nova }/nixos/common/user.nix" ];
+    };
+
     jponchon = {
       # TODO: You can set an initial password for your user.
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
@@ -224,7 +232,6 @@
   ];
   
   programs.light.enable = true;
-  programs.hyprland.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";

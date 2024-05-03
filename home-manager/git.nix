@@ -3,8 +3,8 @@
 
   programs.git = {
     enable = true;
-    userName = "Jean Ponchon";
-    userEmail = "jean.ponchon@novadiscovery.com";
+    userName = lib.mkForce "Jean Ponchon";
+    userEmail = lib.mkForce "jean.ponchon@novadiscovery.com";
     extraConfig = {
       core.editor = "${pkgs.neovim}/bin/nvim";
       init.defaultBranch = "main";

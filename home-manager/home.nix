@@ -33,7 +33,7 @@
 
 
     # Nova devops profile:
-    # inputs.nova.hmProfiles.dev
+    inputs.nova.hmProfiles.standard
   ];
 
   nixpkgs = {
@@ -123,7 +123,7 @@
     jq
     xclip
     sqlite
-    awscli
+    (lib.lowPrio awscli)
 
     # Terminal utilities
     thefuck
