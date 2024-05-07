@@ -122,7 +122,7 @@ in
       input = {
         "*" = {
           xkb_layout = "fr";
-          xkb_variant = "nodeadkeys";
+          xkb_variant = "nodeadkeys,basic,euro";
           xkb_options = "grp:alt_shift_toggle";
           xkb_numlock = "enable";
         };
