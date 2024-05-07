@@ -25,11 +25,11 @@ switch-local-doctor:
 
 # Build the NixOS configuration without activating it.
 nixos-build:
-  sudo nixos-rebuild build --flake . 
+  nixos-rebuild build --flake . --use-remote-sudo
 
 # Build and activate the NixOS configuration.
 nixos-switch:
-  sudo nixos-rebuild switch --flake . 
+  nixos-rebuild switch --flake . --use-remote-sudo
 
 # Update the flake registry.
 update:
