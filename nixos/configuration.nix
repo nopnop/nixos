@@ -19,6 +19,8 @@
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
+
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   nixpkgs = {
@@ -62,7 +64,7 @@
       auto-optimise-store = true;
 
       # For nova: add cache nix
-      substituters = [  "s3://devops-ci-infra-prod-caching-nix?region=eu-central-1&profile=nix-daemon" ];
+      substituters = [ "s3://devops-ci-infra-prod-caching-nix?region=eu-central-1&profile=nix-daemon" ];
       trusted-public-keys = [ ];
     };
   };
@@ -113,7 +115,7 @@
 
   # Security flags
   security.polkit.enable = true; # For sway https://nixos.wiki/wiki/Sway
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
 
   # Enable GNOME services (needed for gpg-agent pinentry gnome3) 
   services.dbus.packages = [ pkgs.gcr ];
@@ -129,12 +131,13 @@
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
-    audio.enable = true;
+    wireplumber.enable = true;
+    # audio.enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    # jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -172,14 +175,34 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   # System-wide user settings (groups, etc), add more users as needed.
-  
+
+  # TODO: Could be a home configuration like jponchon
+  home-manager.users.root =
+    let
+      S3_NIX_CACHE_ACCESS_KEY_ID = "edited";
+      S3_NIX_CACHE_SECRET_ACCESS_KEY = "edited";
+    in
+    {
+      home.stateVersion = "23.11";
+      home.file.".aws/credentials".text = ''
+      [default]
+      source_profile = nix-daemon
+
+      # AWS credentials with RO access to the cache bucket for the Nix daemon
+      # TODO remove in favor of nova-nix-cache-ro
+
+      [nix-daemon]
+      aws_access_key_id=${S3_NIX_CACHE_ACCESS_KEY_ID}
+      aws_secret_access_key=${S3_NIX_CACHE_SECRET_ACCESS_KEY}
+
+      [nova-nix-cache-ro]
+      aws_access_key_id=${S3_NIX_CACHE_ACCESS_KEY_ID}
+      aws_secret_access_key=${S3_NIX_CACHE_SECRET_ACCESS_KEY}
+    '';
+
+    };
 
   users.users = {
-    root = {
-      # Example: import a file from another flake 
-      # Here ${ inputs.nova } is the path to the nova flake
-      # imports = [ "${ inputs.nova }/nixos/common/user.nix" ];
-    };
 
     jponchon = {
       # TODO: You can set an initial password for your user.
@@ -230,7 +253,7 @@
     proggyfonts
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];
-  
+
   programs.light.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

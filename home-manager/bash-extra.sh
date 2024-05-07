@@ -15,6 +15,10 @@ export VISUAL="nvim";
 export BROWSER="google-chrome-stable";
 export NIXPKGS_ALLOW_UNFREE="1";
 
+# Store my history even if I crash or reboot (not sure if it may impact the performances)
+# See https://blog.sanctum.geek.nz/better-bash-history/
+PROMPT_COMMAND='history -a'
+
 # Few extra aliases
 alias ll="ls -lh";
 alias la="ls -a";
@@ -35,6 +39,8 @@ loaddev() {
   export PATH="$HOME/mutable_node_modules/bin:$PATH" # Temporary fix for the breaking change introduced by pnpm v9 unavailable in nix
   export PATH="$HOME/.deno/bin:$PATH" # Temporary fix for the breaking change introduced by pnpm v9 unavailable in nix
 }
+
+# Force
 
 
 nr() {

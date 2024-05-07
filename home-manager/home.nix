@@ -123,7 +123,7 @@
     jq
     xclip
     sqlite
-    (lib.lowPrio awscli)
+    # (lib.lowPrio awscli)
 
     # Terminal utilities
     thefuck

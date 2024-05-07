@@ -40,7 +40,7 @@
         lastname = "Ponchon";
         username = "jponchon";
         business_unit = "sse";
-        gitlabId = "jean.ponchon@novadiscovery.com";
+        gitlabId = "jean.ponchon";
       };
 
     in
