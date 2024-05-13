@@ -67,9 +67,15 @@
     username = "jponchon";
     homeDirectory = "/home/jponchon";
     sessionVariables = {
-      # TODO: None of these are working on sway. Investigate why: could it be the 
-      #       way the sway session is started?
-      #       In the meantime, I enforce my default in bash-extra.sh
+      # Session variable are not well handled by home-manager (!? )
+      # So I use some trick in bash-extra.sh to set them.
+      # 
+      # Basically, this will add them properly in ~/.profile 
+      # but somehow, they are removed in non-login shell afterward.
+
+      # See:
+      #  - https://discourse.nixos.org/t/home-manager-doesnt-seem-to-recognize-sessionvariables/8488/20
+
       # Set the default editor
       EDITOR = "nvim";
       VISUAL = "nvim";

@@ -63,9 +63,14 @@
       # Deduplicate and optimize nix store
       auto-optimise-store = true;
 
+
       # For nova: add cache nix
-      substituters = [ "s3://devops-ci-infra-prod-caching-nix?region=eu-central-1&profile=nix-daemon" ];
-      trusted-public-keys = [ ];
+      trusted-substituters = [ 
+        "s3://devops-ci-infra-prod-caching-nix?region=eu-central-1&profile=nix-daemon" 
+        "https://tweag-jupyter.cachix.org"
+      ];
+      # substituters = [ "s3://devops-ci-infra-prod-caching-nix?region=eu-central-1&profile=nix-daemon" ];
+      # trusted-public-keys = [ ];
     };
   };
 
