@@ -65,8 +65,8 @@
 
 
       # For nova: add cache nix
-      trusted-substituters = [ 
-        "s3://devops-ci-infra-prod-caching-nix?region=eu-central-1&profile=nix-daemon" 
+      trusted-substituters = [
+        "s3://devops-ci-infra-prod-caching-nix?region=eu-central-1&profile=nix-daemon"
         "https://tweag-jupyter.cachix.org"
       ];
       # substituters = [ "s3://devops-ci-infra-prod-caching-nix?region=eu-central-1&profile=nix-daemon" ];
@@ -152,9 +152,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    curl
+    git
+    git-crypt
+    home-manager
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    curl
   ];
 
   # For yubikey
@@ -190,20 +193,20 @@
     {
       home.stateVersion = "23.11";
       home.file.".aws/credentials".text = ''
-      [default]
-      source_profile = nix-daemon
+        [default]
+        source_profile = nix-daemon
 
-      # AWS credentials with RO access to the cache bucket for the Nix daemon
-      # TODO remove in favor of nova-nix-cache-ro
+        # AWS credentials with RO access to the cache bucket for the Nix daemon
+        # TODO remove in favor of nova-nix-cache-ro
 
-      [nix-daemon]
-      aws_access_key_id=${S3_NIX_CACHE_ACCESS_KEY_ID}
-      aws_secret_access_key=${S3_NIX_CACHE_SECRET_ACCESS_KEY}
+        [nix-daemon]
+        aws_access_key_id=${S3_NIX_CACHE_ACCESS_KEY_ID}
+        aws_secret_access_key=${S3_NIX_CACHE_SECRET_ACCESS_KEY}
 
-      [nova-nix-cache-ro]
-      aws_access_key_id=${S3_NIX_CACHE_ACCESS_KEY_ID}
-      aws_secret_access_key=${S3_NIX_CACHE_SECRET_ACCESS_KEY}
-    '';
+        [nova-nix-cache-ro]
+        aws_access_key_id=${S3_NIX_CACHE_ACCESS_KEY_ID}
+        aws_secret_access_key=${S3_NIX_CACHE_SECRET_ACCESS_KEY}
+      '';
 
     };
 
@@ -227,8 +230,6 @@
         # firefox
         # google-chrome
         # atuin
-        git
-        home-manager
       ];
     };
   };
