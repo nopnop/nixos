@@ -3,18 +3,18 @@
     enable = true;
     settings = {
       git_status = {
-        conflicted = "🏳";
-        ahead = "🚀\${count}";
-        behind = "😰 ⇣\${behind_count}";
-        diverged = "😵 ⇡\${ahead_count}⇣\${behind_count}";
-        up_to_date = "✓";
-        untracked = "🤷";
+        conflicted = "😖 conflicted";
+        ahead = "🚀⇡\${count}";
+        behind = "🐢⇣\${count}";
+        diverged = "😭⇅\${behind_count}\${ahead_count}";
+        up_to_date = "[✔](green)";
+        untracked = "🤷\${count}";
         stashed = "📦";
-        modified = "📝";
-        staged = "[ ++\${count} ] (green)";
-        renamed = "👅";
-        deleted = "🗑";
-
+        modified = "[🌱+\${count}](green)";
+        staged = "[💺+\${count}](blue)";
+        renamed = "💱";
+        deleted = "🚮";
+        style = "bold purple";
       };
     };
   };
