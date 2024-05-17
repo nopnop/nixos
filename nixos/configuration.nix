@@ -186,10 +186,9 @@
 
   # TODO: Could be a home configuration like jponchon
   home-manager.users.root =
-    let
-      S3_NIX_CACHE_ACCESS_KEY_ID = "edited";
-      S3_NIX_CACHE_SECRET_ACCESS_KEY = "edited";
-    in
+    let 
+      secrets = import ../secrets.nix;
+    in 
     {
       home.stateVersion = "23.11";
       home.file.".aws/credentials".text = ''
@@ -200,12 +199,12 @@
         # TODO remove in favor of nova-nix-cache-ro
 
         [nix-daemon]
-        aws_access_key_id=${S3_NIX_CACHE_ACCESS_KEY_ID}
-        aws_secret_access_key=${S3_NIX_CACHE_SECRET_ACCESS_KEY}
+        aws_access_key_id=${secrets.S3_NIX_CACHE_ACCESS_KEY_ID}
+        aws_secret_access_key=${secrets.S3_NIX_CACHE_SECRET_ACCESS_KEY}
 
         [nova-nix-cache-ro]
-        aws_access_key_id=${S3_NIX_CACHE_ACCESS_KEY_ID}
-        aws_secret_access_key=${S3_NIX_CACHE_SECRET_ACCESS_KEY}
+        aws_access_key_id=${secrets.S3_NIX_CACHE_ACCESS_KEY_ID}
+        aws_secret_access_key=${secrets.S3_NIX_CACHE_SECRET_ACCESS_KEY}
       '';
 
     };
