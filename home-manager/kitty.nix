@@ -12,7 +12,9 @@
 
     settings = {
       background_opacity = "0.95";
+      scrollback_lines = 100000;
     };
+
 
   };
 }
