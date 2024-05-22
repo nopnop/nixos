@@ -187,7 +187,7 @@
   programs.yazi.enable = true;
 
   # A highly configurable and lightweight notification daemon.
-  services.dunst.enable = true;
+  # services.dunst.enable = true; # Replaced by swaync
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

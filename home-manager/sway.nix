@@ -28,6 +28,11 @@ in
     };
   };
 
+  services.swaync = {
+    enable = true;
+
+  };
+
   home = {
     file = {
       ".config/sway/background.png".source = background;
@@ -111,6 +116,9 @@ in
 
         # Status bar: waybar
         { command = "waybar"; }
+
+        # Notification daemon
+        { command = "swaync"; }
         # Notification daemon
         # { command = "mako"; }
         # Polkit
@@ -152,6 +160,7 @@ in
         "${modifier}+Alt+Space" = lib.mkForce "exec ${pkgs.ulauncher}/bin/ulauncher";
         "${modifier}+Shift+Return" = "exec ${pkgs.google-chrome}/bin/google-chrome-stable";
         "${modifier}+Shift+n" = "exec nautilus";
+        "${modifier}+Ctrl+n" = "exec swaync-client -t -sw";
   
         # Screenshot on print key
         "${modifier}+Print" = "exec sh -c 'grim -g \"\$(slurp)\" - | swappy -f -'";
