@@ -83,11 +83,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1714981474,
-        "narHash": "sha256-b3/U21CJjCjJKmA9WqUbZGZgCvospO3ArOUTgJugkOY=",
+        "lastModified": 1715930644,
+        "narHash": "sha256-W9pyM3/vePxrffHtzlJI6lDS3seANQ+Nqp+i58O46LI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "6ebe7be2e67be7b9b54d61ce5704f6fb466c536f",
+        "rev": "e3ad5108f54177e6520535768ddbf1e6af54b59d",
         "type": "github"
       },
       "original": {
@@ -98,11 +98,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1714906307,
-        "narHash": "sha256-UlRZtrCnhPFSJlDQE7M0eyhgvuuHBTe1eJ9N9AQlJQ0=",
+        "lastModified": 1716293225,
+        "narHash": "sha256-pU9ViBVE3XYb70xZx+jK6SEVphvt7xMTbm6yDIF4xPs=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "25865a40d14b3f9cf19f19b924e2ab4069b09588",
+        "rev": "3eaeaeb6b1e08a016380c279f8846e0bd8808916",
         "type": "github"
       },
       "original": {
@@ -185,11 +185,11 @@
         "user-profile": "user-profile"
       },
       "locked": {
-        "lastModified": 1714745063,
-        "narHash": "sha256-eq7GOikmBPzESV8kRLDXzvkskuax8owtKZJ6mTGAA2k=",
+        "lastModified": 1715960323,
+        "narHash": "sha256-5WSbYU1iqmlI7HBuly+JC29gbGcEew5KSStRkxhwbIA=",
         "ref": "refs/heads/main",
-        "rev": "9b939d981d9d5319fbefc60ef1cc7bc6979d17af",
-        "revCount": 952,
+        "rev": "58c9ac181a04b2f454c392ff8dfc67d67fb15c19",
+        "revCount": 955,
         "type": "git",
         "url": "ssh://git@git.novadiscovery.net/sys/doctor"
       },
