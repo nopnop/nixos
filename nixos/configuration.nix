@@ -137,7 +137,7 @@
   services.pipewire = {
     enable = true;
     wireplumber.enable = true;
-    # audio.enable = true;
+    audio.enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
@@ -185,29 +185,39 @@
   # System-wide user settings (groups, etc), add more users as needed.
 
   # TODO: Could be a home configuration like jponchon
-  home-manager.users.root =
-    let 
-      secrets = import ../secrets.nix;
-    in 
-    {
-      home.stateVersion = "23.11";
-      home.file.".aws/credentials".text = ''
-        [default]
-        source_profile = nix-daemon
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    users = {
+      root =
+        let
+          secrets = import ../secrets.nix;
+        in
+        {
+          home.stateVersion = "23.11";
+          home.file.".aws/credentials".text = ''
+            [default]
+            source_profile = nix-daemon
 
-        # AWS credentials with RO access to the cache bucket for the Nix daemon
-        # TODO remove in favor of nova-nix-cache-ro
+            # AWS credentials with RO access to the cache bucket for the Nix daemon
+            # TODO remove in favor of nova-nix-cache-ro
 
-        [nix-daemon]
-        aws_access_key_id=${secrets.S3_NIX_CACHE_ACCESS_KEY_ID}
-        aws_secret_access_key=${secrets.S3_NIX_CACHE_SECRET_ACCESS_KEY}
+            [nix-daemon]
+            aws_access_key_id=${secrets.S3_NIX_CACHE_ACCESS_KEY_ID}
+            aws_secret_access_key=${secrets.S3_NIX_CACHE_SECRET_ACCESS_KEY}
 
-        [nova-nix-cache-ro]
-        aws_access_key_id=${secrets.S3_NIX_CACHE_ACCESS_KEY_ID}
-        aws_secret_access_key=${secrets.S3_NIX_CACHE_SECRET_ACCESS_KEY}
-      '';
-
+            [nova-nix-cache-ro]
+            aws_access_key_id=${secrets.S3_NIX_CACHE_ACCESS_KEY_ID}
+            aws_secret_access_key=${secrets.S3_NIX_CACHE_SECRET_ACCESS_KEY}
+          '';
+        };
+      jponchon = {
+        imports = [
+          ../home-manager/home.nix
+          "${inputs.nova}/nix/hm/nova-user.nix"
+        ];
+      };
     };
+  };
 
   users.users = {
 
@@ -222,7 +232,7 @@
       # ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
 
-      extraGroups = [ "networkmanager" "wheel" "video" "docker" ];
+      extraGroups = [ "networkmanager" "wheel" "video" "docker" "input" "audio" "rtkit" ];
 
       # TODO: Remove me then?
       packages = with pkgs; [
@@ -260,6 +270,17 @@
   ];
 
   programs.light.enable = true;
+
+
+  # Tracking Issue: Intel MIPI/IPU6 webcam-support
+  # https://github.com/NixOS/nixpkgs/issues/225743#issuecomment-1849613797
+  # Infrastructure Processing Unit
+  # hardware.ipu6 = {
+  #   enable = true;
+  #   platform = "ipu6ep";
+  # };
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";

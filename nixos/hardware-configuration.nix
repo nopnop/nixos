@@ -38,11 +38,5 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  # Tracking Issue: Intel MIPI/IPU6 webcam-support
-  # https://github.com/NixOS/nixpkgs/issues/225743#issuecomment-1849613797
-  # Infrastructure Processing Unit
-  hardware.ipu6 = {
-    enable = true;
-    platform = "ipu6ep";
-  };
+
 }

@@ -84,16 +84,16 @@
       # Available through 'home-manager --flake .#your-username@your-hostname'
       ## Comment & follow link to make it 
       ## a nixos module: https://github.com/Misterio77/nix-starter-configs#use-home-manager-as-a-nixos-module
-      homeConfigurations = {
-        # Replaced with your username@hostname
-        "jponchon@n00085" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs novaUserProfile; };
-          modules = [
-            # > Our main home-manager configuration file <
-            ./home-manager/home.nix
-          ];
-        };
-      };
+      # homeConfigurations = {
+      #   # Replaced with your username@hostname
+      #   "jponchon@n00085" = home-manager.lib.homeManagerConfiguration {
+      #     pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+      #     extraSpecialArgs = { inherit inputs outputs novaUserProfile; };
+      #     modules = [
+      #       # > Our main home-manager configuration file <
+      #       ./home-manager/home.nix
+      #     ];
+      #   };
+      # };
     };
 }

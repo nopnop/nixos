@@ -32,8 +32,8 @@
     ./git.nix
 
 
-    # Nova devops profile:
-    inputs.nova.hmProfiles.standard
+    # Nova profile:
+    # inputs.nova.hmProfiles.standard
   ];
 
   nixpkgs = {
