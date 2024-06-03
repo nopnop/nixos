@@ -139,6 +139,7 @@
     sd # Simpler sed
     fd # Simpler find
     rlwrap # Proper readline wrap with history (usfull for sqlite)
+    # direnv
 
     # Sytem utilities
     btop
@@ -147,6 +148,7 @@
     # Audio
     pulseaudio
     alsa-utils
+    pavucontrol
 
     # Networking
     croc # Move file around
@@ -170,6 +172,8 @@
       cover_img_length = 18;
     };
   };
+
+  programs.direnv.enable = true;
 
 
   programs.ssh.enable = true;

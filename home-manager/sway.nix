@@ -60,7 +60,7 @@ in
 
       window.border = 1;
 
-      # bars = [ ];
+      bars = [ ];
 
 
       fonts = {
