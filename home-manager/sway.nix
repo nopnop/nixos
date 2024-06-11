@@ -30,7 +30,6 @@ in
 
   services.swaync = {
     enable = true;
-
   };
 
   home = {

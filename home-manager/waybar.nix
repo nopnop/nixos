@@ -2,6 +2,12 @@
 let colorScheme = import ../color-scheme/catppuccin.nix;
 in
 {
+
+  home.packages = with pkgs; [
+    networkmanagerapplet
+    pavucontrol
+  ];
+
   # See <https://github.com/nix-community/home-manager/blob/master/modules/programs/waybar.nix>
   # see <https://github.com/Alexays/Waybar/wiki/Configuration>
   # see <https://github.com/Alexays/Waybar/wiki/Examples>
@@ -92,6 +98,7 @@ in
           format-ethernet = "{ifname}: {ipaddr}/{cidr} ";
           format-disconnected = "Disconnected ⚠";
           interval = 7;
+          on-click = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
         };
 
         pulseaudio = {
@@ -108,7 +115,7 @@ in
             car = "";
             default = [ "" "" ];
           };
-          on-click = "pavucontrol";
+          on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
         };
 
       };
