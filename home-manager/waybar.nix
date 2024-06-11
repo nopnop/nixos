@@ -6,6 +6,8 @@ in
   home.packages = with pkgs; [
     networkmanagerapplet
     pavucontrol
+    btop
+    kitty
   ];
 
   # See <https://github.com/nix-community/home-manager/blob/master/modules/programs/waybar.nix>
@@ -58,11 +60,13 @@ in
           spacing = 10;
         };
         clock = {
+          format = "{:%Y-%m-%d | %H:%M}";
           tooltip-format = "{:%Y-%m-%d | %H:%M}";
           format-alt = "{:%Y-%m-%d}";
         };
         cpu = {
           format = "{usage}% ";
+          on-click = "${pkgs.kitty}/bin/kitty ${pkgs.btop}/bin/btop";
         };
         memory = {
           format = "{}% ";
