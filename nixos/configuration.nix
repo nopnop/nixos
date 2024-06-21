@@ -246,6 +246,13 @@
 
   };
 
+
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
+    # tailscale
+  };
+
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk
