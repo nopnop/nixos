@@ -162,7 +162,9 @@ in
         "${modifier}+Ctrl+n" = "exec swaync-client -t -sw";
   
         # Screenshot on print key
-        "${modifier}+Print" = "exec sh -c 'grim -g \"\$(slurp)\" - | swappy -f -'";
+        # "${modifier}+Print" = "exec sh -c 'grim -g \"\$(slurp)\" - | swappy -f -'";
+        "${modifier}+Print" = "exec sh -c 'grim -g \"\$(slurp)\" - | xclip -selection clipboard -t image/png'";
+        "${modifier}+Shift+Print" = "exec sh -c 'grim -g \"\$(slurp)\" /tmp/grim.png && shutter /tmp/grim.png && xclip -selection clipboard -t image/png /tmp/grim.png && rm /tmp/grim.png'";
         
 
         # Add keybindings for french keyboard layout

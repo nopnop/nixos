@@ -102,6 +102,7 @@
     drawing
     xournal
     krita
+    shutter
 
     # Yubikey
     # see too https://nixos.wiki/wiki/Yubikey
@@ -135,7 +136,7 @@
     thefuck
     tldr
     browsh # Browser
-    ripgrep
+    ripgrep # rg
     sd # Simpler sed
     fd # Simpler find
     rlwrap # Proper readline wrap with history (usfull for sqlite)

@@ -24,6 +24,7 @@ alias nd="nix develop";
 alias wifi="nmtui";
 alias eslintfix="git show HEAD --format='' --name-status | grep -E '^[AM]' | grep -E '\.(vue|ts)$' | cut -f2 | xargs node_modules/.bin/eslint --fix";
 alias x="xclip -selection clipboard";
+alias icat="kitty icat";
 
 # The fuck
 eval "$(thefuck --alias)"
