@@ -103,6 +103,7 @@
     xournal
     krita
     shutter
+    inkscape
 
     # Yubikey
     # see too https://nixos.wiki/wiki/Yubikey

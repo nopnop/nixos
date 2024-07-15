@@ -1,7 +1,10 @@
 { config, lib, pkgs, ... }:
 let
   colorScheme = import ../color-scheme/catppuccin.nix;
-  background = ../home/noj/Pictures/Wallpapers/nova2023.png;
+  background = pkgs.fetchurl {
+    url = "https://i.imgur.com/rAdT2AU.png";
+    sha256 = "sha256-rxARqyBzUdOFVyKIueJN4HDhfbIbwVs1KGzPDuZTbnk=";
+  };
 in
 {
   imports = [
@@ -141,9 +144,9 @@ in
         };
       };
 
-       output = {
+      output = {
         "*" = { bg = "${background} fill #1d2021"; };
-       };
+      };
 
 
 
@@ -160,12 +163,12 @@ in
         "${modifier}+Shift+Return" = "exec ${pkgs.google-chrome}/bin/google-chrome-stable";
         "${modifier}+Shift+n" = "exec nautilus";
         "${modifier}+Ctrl+n" = "exec swaync-client -t -sw";
-  
+
         # Screenshot on print key
         # "${modifier}+Print" = "exec sh -c 'grim -g \"\$(slurp)\" - | swappy -f -'";
         "${modifier}+Print" = "exec sh -c 'grim -g \"\$(slurp)\" - | xclip -selection clipboard -t image/png'";
         "${modifier}+Shift+Print" = "exec sh -c 'grim -g \"\$(slurp)\" /tmp/grim.png && shutter /tmp/grim.png && xclip -selection clipboard -t image/png /tmp/grim.png && rm /tmp/grim.png'";
-        
+
 
         # Add keybindings for french keyboard layout
         "${modifier}+ampersand" = "workspace number 1";
@@ -216,7 +219,7 @@ in
         "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +2%";
         # Lower sink (microphone) volume
         "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -2%";
-        
+
         # Media player controler https://wiki.archlinux.org/title/MPRIS
         "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
         "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
