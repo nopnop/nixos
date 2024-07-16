@@ -92,6 +92,7 @@
     nixpkgs-fmt
     vlc
     xdg-utils
+    openssl
 
     # Grim and slurp are used to take screenshots
     grim
