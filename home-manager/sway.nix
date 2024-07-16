@@ -2,8 +2,8 @@
 let
   colorScheme = import ../color-scheme/catppuccin.nix;
   background = pkgs.fetchurl {
-    url = "https://i.imgur.com/rAdT2AU.png";
-    sha256 = "sha256-rxARqyBzUdOFVyKIueJN4HDhfbIbwVs1KGzPDuZTbnk=";
+    url = "https://i.postimg.cc/tq2wrPpq/wallpaper-novainsilico-2024-07b.png";
+    sha256 = "sha256-s2ItXbD4LCIMhrfq7ZD5l8dhVitzwYk66ULrU36wWT0=";
   };
 in
 {
