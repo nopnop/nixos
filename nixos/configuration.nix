@@ -48,31 +48,38 @@
     };
   };
 
-  nix = {
-    # This will add each flake input as a registry
-    # To make nix3 commands consistent with your flake
-    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+  nix =
+    let
+      secrets = import ../secrets.nix;
+    in
+    {
+      # This will add each flake input as a registry
+      # To make nix3 commands consistent with your flake
+      registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
 
-    # This will additionally add your inputs to the system's legacy channels
-    # Making legacy nix commands consistent as well, awesome!
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+      # This will additionally add your inputs to the system's legacy channels
+      # Making legacy nix commands consistent as well, awesome!
+      nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
 
-    settings = {
-      # Enable flakes and new 'nix' command
-      experimental-features = "nix-command flakes";
-      # Deduplicate and optimize nix store
-      auto-optimise-store = true;
+      settings = {
+        # Enable flakes and new 'nix' command
+        experimental-features = "nix-command flakes";
+        # Deduplicate and optimize nix store
+        auto-optimise-store = true;
 
 
-      # For nova: add cache nix
-      trusted-substituters = [
-        "s3://devops-ci-infra-prod-caching-nix?region=eu-central-1&profile=nix-daemon"
-        "https://tweag-jupyter.cachix.org"
-      ];
-      # substituters = [ "s3://devops-ci-infra-prod-caching-nix?region=eu-central-1&profile=nix-daemon" ];
-      # trusted-public-keys = [ ];
+        # For nova: add cache nix
+        trusted-substituters = [
+          "s3://devops-ci-infra-prod-caching-nix?region=eu-central-1"
+          "https://cache.nixos.org"
+          "https://tweag-jupyter.cachix.org"
+        ];
+        trusted-public-keys = [
+          secrets.NOVA_NIX_CACHE_KEY
+          secrets.NIXOS_NIX_CACHE_KEY
+        ];
+      };
     };
-  };
 
   # Extra configuration --------------------------------------------------
 
@@ -186,9 +193,9 @@
 
   # TODO: Could be a home configuration like jponchon
   home-manager.users.root =
-    let 
+    let
       secrets = import ../secrets.nix;
-    in 
+    in
     {
       home.stateVersion = "23.11";
       home.file.".aws/credentials".text = ''
