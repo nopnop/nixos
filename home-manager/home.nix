@@ -30,6 +30,7 @@
 
     # Dev stuff
     ./git.nix
+    ./ssh.nix
 
 
     # Nova devops profile:
